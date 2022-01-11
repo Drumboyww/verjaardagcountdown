@@ -3,7 +3,7 @@ const second = 1000,
       hour = minute * 60,
       day = hour * 24;
 
-let countDown = new Date('JAN 17, 2022 12:00:00').getTime(),
+let countDown = new Date('Jan 17, 2022 10:00:00').getTime(),
     x = setInterval(function() {
 
       let now = new Date().getTime(),
@@ -15,9 +15,9 @@ let countDown = new Date('JAN 17, 2022 12:00:00').getTime(),
         document.getElementById('seconds').innerHTML = Math.floor((distance % (minute)) / second);
       
       //do something later when date is reached
-      if (distance < 0) {
-        clearInterval(x);
-        'Vandaag ben ik jarig!;
-      }
+      //if (distance < 0) {
+      //  clearInterval(x);
+      //  'IT'S MY BIRTHDAY!;
+      //}
 
     }, second)
