@@ -1,31 +1,25 @@
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 body {
-  align-items: center;
   background-color: #ffd54f;
-  display: flex;
-  font-family: -apple-system, 
-    BlinkMacSystemFont, 
-    "Segoe UI", 
-    Roboto, 
-    Oxygen-Sans, 
-    Ubuntu, 
-    Cantarell, 
-    "Helvetica Neue", 
-    sans-serif;
 }
 
 .container {
   color: #333;
-  margin: 0 auto;
   text-align: center;
 }
 
 h1 {
+  font-size: 2em;
   font-weight: normal;
-  letter-spacing: .125rem;
-  text-transform: uppercase;
+}
+
+h1 span {
+  font-size: 2rem;
 }
 
 li {
@@ -33,5 +27,11 @@ li {
   font-size: 1.5em;
   list-style-type: none;
   padding: 1em;
+  text-align: center;
   text-transform: uppercase;
+}
+
+li span {
+  display: block;
+  font-size: 4.5rem;
 }
