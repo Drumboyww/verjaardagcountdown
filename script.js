@@ -17,7 +17,7 @@ let countDown = new Date('JAN 17, 2022 12:00:00').getTime(),
       //do something later when date is reached
       if (distance < 0) {
         clearInterval(x);
-        '<span aria-label="party popper">&#x1f389;</span> WHOOOW Vandaag ben ik jarig! <span aria-label="birthday cake">&#x1f382;</span>;
+        'Vandaag ben ik jarig!;
       }
 
     }, second)
