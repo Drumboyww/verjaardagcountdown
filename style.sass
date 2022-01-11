@@ -1,0 +1,200 @@
+// Import Google fonts
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700')
+@import url('https://fonts.googleapis.com/css?family=Graduate')
+
+// Main Colours
+$background: darkgray
+$countdown: lighten(darkgray, 10%)
+$foreground: white
+$text: darken(darkgray, 20%)
+
+// Cake Colours
+$cake-top: #8a6b58
+$cake-body: #6b5344
+$jam: #ca6060
+$buttercream: #f8ecc9
+$outerflame: yellow
+$innerflame: #d1835c
+
+// Mixins
+@mixin mobile
+  @media screen and (max-width: 767px)
+    @content
+    
+@mixin mob525
+  @media screen and (max-width: 525px)
+    @content
+    
+@mixin mob450
+  @media screen and (max-width: 450px)
+    @content
+
+// Main Sass
+body
+  background-color: $background
+  
+  #container   
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    max-width: 50rem
+    width: 100%
+    margin: 0 auto
+    text-align: center    
+    letter-spacing: 0.15em
+    
+    @include mob525
+      top: calc(50% - -25px)
+    
+    #cake
+      margin: 0 auto 10rem
+      width: 200px
+      height: 50px
+      background-color: $cake-top
+      border-radius: 100%
+      box-shadow: 0px 4px 0px $cake-body,0px 8px 0px $cake-body,0px 12px 0px $cake-body,0px 16px 0px $cake-body,0px 20px 0px $cake-body,0px 24px 0px $cake-body,0px 28px 0px $cake-body,0px 32px 0px $buttercream,0px 36px 0px $buttercream,0px 40px 0px $jam,0px 44px 0px $jam,0px 48px 0px $buttercream,0px 52px 0px $buttercream,0px 56px 0px $cake-body,0px 60px 0px $cake-body,0px 64px 0px $cake-body,0px 68px 0px $cake-body,0px 72px 0px $cake-body,0px 76px 0px $cake-body,0px 80px 0px $cake-body
+      
+      @include mob525
+        margin: 0 auto 9rem
+      
+      &::before
+        content: ''
+        position: absolute
+        width: 7px
+        height: 5px
+        background-color: lightblue
+        box-shadow: 0px 5px 0px white,0px 10px 0px lightblue,0px 15px 0px white,0px 20px 0px lightblue, 0px 25px 0px white,0px 30px 0px lightblue,0px 35px 0px white, 0px 40px 0px lightblue,0px 45px 0px white, 0px 50px 0px lightblue
+        top: -25px
+      
+      #flame
+        width: 18px
+        height: 18px
+        background: $outerflame
+        position: absolute
+        z-index: 6
+        border-radius: 80% 0 55% 50% / 55% 0 80% 50%
+        left: 50%
+        top: -40px
+        margin-left: -5px
+        transform: rotateZ(-45deg)
+        animation: flame-flicker .9s ease infinite
+        
+        #inner-flame
+          width: 10px
+          height: 10px
+          background: $innerflame
+          position: absolute
+          z-index: 8
+          border-radius: 80% 0 55% 50% / 55% 0 80% 50%
+          left: 50%
+          margin-left: -7px
+          bottom: 2px
+          opacity: 0.4
+          
+      .underline
+        position: relative
+        bottom: -150px
+        left: 50%
+        -webkit-transform: translateX(-50%)
+        transform: translateX(-50%)
+        width: 130px
+        height: 1px
+        background-color: $countdown
+        &::before, &::after
+          content: ''
+          position: absolute
+          height: 1px
+          left: 50%
+          -webkit-transform: translateX(-50%)
+          transform: translateX(-50%)
+        &::before
+          top: 10px
+          width: 110px
+          background-color: $countdown
+        &::after
+          top: 20px
+          width: 90px
+          background-color: $countdown          
+        
+    #countdown
+      
+      #cdDays, #cdHours, #cdMins, #cdSecs
+        display: inline-block
+        width: 24%
+        background-color: $countdown
+        font-family: 'Graduate', cursive
+
+        @include mobile
+          width: 22%
+        @include mob525
+          width: 33%
+
+      #cdDays, #cdHours
+        @include mob525
+          margin-bottom: 1%
+
+      .spacer
+        position: relative
+        content: ''
+        display: block
+        height: 20px
+        background: $foreground
+        &::before, &::after
+          content: ''
+          position: absolute
+          top: 5px
+          width: 10px
+          height: 10px
+          background: $background
+          border-radius: 50%
+        &::before
+          left: .8rem
+        &::after
+          right: .8rem
+
+      #daysNum, #hoursNum, #minsNum, #secsNum
+        background-color: $foreground
+        color: black
+        opacity: 0.6
+        padding: 2rem 0
+        font-size: 3em
+        box-shadow: 0 15px 10px -10px rgba(181, 131, 141, 0)
+
+        @include mob525
+          padding: 1rem 0
+        @include mob450
+          font-size: 11vw
+
+      .label
+        padding: 1.2rem 0
+        opacity: 0.6
+        font-family: 'Quicksand', sans-serif
+
+        @include mob525
+          padding: 0.6rem 0
+        @include mob450
+          font-size: 4.5vw
+
+      #text
+        color: $text
+        padding-top: 2rem
+        font-family: 'Quicksand', sans-serif
+
+        @include mob525
+          padding-top: 1.5rem
+
+// Keyframes
+@keyframes flame-flicker
+  0%, 100%
+    width: 16px
+    height: 17px
+  25%
+    width: 19px
+    height: 17px
+  50%
+    width: 17px
+    height: 16px
+  75%
+    width: 17px
+    height: 19px
